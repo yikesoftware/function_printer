@@ -24,3 +24,10 @@
 1	611	6590432653049680	scanner/CMakeFiles/scanner.dir/scanner.cpp.obj	7e6722d26de2fea4
 612	652	6590432653438318	../../../scanner/lib/scanner.lib	826b7a77faf75a23
 652	823	6590432654864505	parser/parser.exe	bf5f8ebc8fdee616
+9	370	6590460182427791	parser/CMakeFiles/parser.dir/parser.cpp.obj	b6f1d6d878cbda72
+6	654	6590460185260224	scanner/CMakeFiles/scanner.dir/scanner.cpp.obj	7e6722d26de2fea4
+2	662	6590460185280170	scanner/CMakeFiles/scannertest.dir/scanner.cpp.obj	624725f92dbb3cdd
+12	676	6590460185459683	parser/CMakeFiles/parser.dir/parsertest.cpp.obj	44c080b073f3d27e
+655	706	6590460185778832	../../../scanner/lib/scanner.lib	826b7a77faf75a23
+662	854	6590460186945697	scanner/scannertest.exe	5dded00f022539e8
+706	891	6590460187324804	parser/parser.exe	bf5f8ebc8fdee616

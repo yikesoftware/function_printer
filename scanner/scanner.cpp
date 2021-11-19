@@ -23,13 +23,13 @@ int InitScanner(const char* filename) {
 	return 0;
 }
 
-fpos_t GetFilePos() {
+static fpos_t GetFilePos() {
 	fpos_t pos;
 	fgetpos(srcFile, &pos);
 	return pos;
 }
 
-char FetchChar() {
+static char FetchChar() {
 	// Read one char from srcFile stream;
 	char ch = fgetc(srcFile);
 	if (ch != EOF) {
@@ -38,7 +38,7 @@ char FetchChar() {
 	return ch;
 }
 
-void IgnoreChar(const char ch) {
+static void IgnoreChar(const char ch) {
 	// Put ch back to the srcFile stream
 	// It will be fetched again next turn;
 	if (ch != EOF) {
@@ -47,11 +47,11 @@ void IgnoreChar(const char ch) {
 	}
 }
 
-void EmptyTokenBuf() {
+static void EmptyTokenBuf() {
 	memset(TokenBufStream, 0, sizeof(TokenBufStream));
 }
 
-int TokenBufPush(const char ch) {
+static int TokenBufPush(const char ch) {
 	if (strlen(TokenBufStream) >= MAX_TOKEN_LEN) {
 		fprintf(stderr, "[%s, %d, %s()] Token too long! - '%s'\n", __BASE_FILE__, __LINE__, __func__, TokenBufStream);
 		exit(-1);
@@ -61,13 +61,13 @@ int TokenBufPush(const char ch) {
 	return 0;
 }
 
-Token GetErrorToken() {
+static Token GetErrorToken() {
 	Token errtoken;
 	memset(&errtoken, 0, sizeof(errtoken));
 	return errtoken;
 }
 
-Token KeyTokenMatch() {
+static Token KeyTokenMatch() {
 	int TokenTabSize = sizeof(TokenTab) / sizeof(Token);
 	// Traverse the entire TokenTab
 	for (int i = 0; i < TokenTabSize; i++) {

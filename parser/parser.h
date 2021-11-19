@@ -24,7 +24,18 @@ struct ExprNode
 	} Content; // The content of a node can only be one of them
 };
 
-
 void Parser(const char *filename);
-void FetchToken();
-void Program();
+
+
+
+/*
+struct ExprNode* Expression();
+struct ExprNode* Term();
+struct ExprNode* Factor();
+struct ExprNode* Component();
+struct ExprNode* Atom();
+*/
+
+
+
+
