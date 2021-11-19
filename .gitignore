@@ -1,0 +1,3 @@
+./scanner/build
+./parser/build
+./semantic/build

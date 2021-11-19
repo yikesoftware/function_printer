@@ -1,4 +1,13 @@
 F:/work/function_printer/out/build/x64-Debug/CMakeFiles/function_printer.dir
-F:/work/function_printer/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
-F:/work/function_printer/out/build/x64-Debug/CMakeFiles/scanner.dir
 F:/work/function_printer/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+F:/work/function_printer/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+F:/work/function_printer/out/build/x64-Debug/scanner/CMakeFiles/rebuild_cache.dir
+F:/work/function_printer/out/build/x64-Debug/scanner/CMakeFiles/scannertest.dir
+F:/work/function_printer/out/build/x64-Debug/scanner/CMakeFiles/scanner.dir
+F:/work/function_printer/out/build/x64-Debug/scanner/CMakeFiles/edit_cache.dir
+F:/work/function_printer/out/build/x64-Debug/parser/CMakeFiles/parser.dir
+F:/work/function_printer/out/build/x64-Debug/parser/CMakeFiles/edit_cache.dir
+F:/work/function_printer/out/build/x64-Debug/parser/CMakeFiles/rebuild_cache.dir
+F:/work/function_printer/out/build/x64-Debug/semantic/CMakeFiles/semantic.dir
+F:/work/function_printer/out/build/x64-Debug/semantic/CMakeFiles/edit_cache.dir
+F:/work/function_printer/out/build/x64-Debug/semantic/CMakeFiles/rebuild_cache.dir

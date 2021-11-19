@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\parser",
+    "\\scanner"
   ],
-  "SelectedNode": "\\scanner",
+  "SelectedNode": "\\parser\\parser.cpp",
   "PreviewInSolutionExplorer": false
 }

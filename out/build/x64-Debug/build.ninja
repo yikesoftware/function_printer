@@ -78,6 +78,17 @@ build function_printer.exe: CXX_EXECUTABLE_LINKER__function_printer_Debug CMakeF
 
 
 #############################################
+# Utility command for edit_cache
+
+build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D F:\work\function_printer\out\build\x64-Debug && "E:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build edit_cache: phony CMakeFiles\edit_cache.util
+
+
+#############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
@@ -89,65 +100,269 @@ build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
 build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 
 # =============================================================================
-# Object build statements for EXECUTABLE target scanner
+# Write statements declared in CMakeLists.txt:
+# F:/work/function_printer/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build scanner\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D F:\work\function_printer\out\build\x64-Debug\scanner && "E:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SF:\work\function_printer -BF:\work\function_printer\out\build\x64-Debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build scanner\rebuild_cache: phony scanner\CMakeFiles\rebuild_cache.util
+
+# =============================================================================
+# Object build statements for EXECUTABLE target scannertest
+
+
+#############################################
+# Order-only phony target for scannertest
+
+build cmake_object_order_depends_target_scannertest: phony || scanner\CMakeFiles\scannertest.dir
+
+build scanner\CMakeFiles\scannertest.dir\scanner.cpp.obj: CXX_COMPILER__scannertest_Debug F$:\work\function_printer\scanner\scanner.cpp || cmake_object_order_depends_target_scannertest
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  OBJECT_DIR = scanner\CMakeFiles\scannertest.dir
+  OBJECT_FILE_DIR = scanner\CMakeFiles\scannertest.dir
+  TARGET_COMPILE_PDB = scanner\CMakeFiles\scannertest.dir\
+  TARGET_PDB = scanner\scannertest.pdb
+
+build scanner\CMakeFiles\scannertest.dir\scannertest.cpp.obj: CXX_COMPILER__scannertest_Debug F$:\work\function_printer\scanner\scannertest.cpp || cmake_object_order_depends_target_scannertest
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  OBJECT_DIR = scanner\CMakeFiles\scannertest.dir
+  OBJECT_FILE_DIR = scanner\CMakeFiles\scannertest.dir
+  TARGET_COMPILE_PDB = scanner\CMakeFiles\scannertest.dir\
+  TARGET_PDB = scanner\scannertest.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target scannertest
+
+
+#############################################
+# Link the executable scanner\scannertest.exe
+
+build scanner\scannertest.exe: CXX_EXECUTABLE_LINKER__scannertest_Debug scanner\CMakeFiles\scannertest.dir\scanner.cpp.obj scanner\CMakeFiles\scannertest.dir\scannertest.cpp.obj
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
+  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  OBJECT_DIR = scanner\CMakeFiles\scannertest.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = scanner\CMakeFiles\scannertest.dir\
+  TARGET_FILE = scanner\scannertest.exe
+  TARGET_IMPLIB = scanner\scannertest.lib
+  TARGET_PDB = scanner\scannertest.pdb
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target scanner
 
 
 #############################################
 # Order-only phony target for scanner
 
-build cmake_object_order_depends_target_scanner: phony || CMakeFiles\scanner.dir
+build cmake_object_order_depends_target_scanner: phony || scanner\CMakeFiles\scanner.dir
 
-build CMakeFiles\scanner.dir\scanner.cpp.obj: CXX_COMPILER__scanner_Debug F$:\work\function_printer\scanner.cpp || cmake_object_order_depends_target_scanner
+build scanner\CMakeFiles\scanner.dir\scanner.cpp.obj: CXX_COMPILER__scanner_Debug F$:\work\function_printer\scanner\scanner.cpp || cmake_object_order_depends_target_scanner
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
-  OBJECT_DIR = CMakeFiles\scanner.dir
-  OBJECT_FILE_DIR = CMakeFiles\scanner.dir
-  TARGET_COMPILE_PDB = CMakeFiles\scanner.dir\
-  TARGET_PDB = scanner.pdb
-
-build CMakeFiles\scanner.dir\scannertest.cpp.obj: CXX_COMPILER__scanner_Debug F$:\work\function_printer\scannertest.cpp || cmake_object_order_depends_target_scanner
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
-  OBJECT_DIR = CMakeFiles\scanner.dir
-  OBJECT_FILE_DIR = CMakeFiles\scanner.dir
-  TARGET_COMPILE_PDB = CMakeFiles\scanner.dir\
-  TARGET_PDB = scanner.pdb
+  OBJECT_DIR = scanner\CMakeFiles\scanner.dir
+  OBJECT_FILE_DIR = scanner\CMakeFiles\scanner.dir
+  TARGET_COMPILE_PDB = scanner\CMakeFiles\scanner.dir\scanner.pdb
+  TARGET_PDB = ..\..\..\scanner\lib\scanner.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target scanner
+# Link build statements for STATIC_LIBRARY target scanner
 
 
 #############################################
-# Link the executable scanner.exe
+# Link the static library ..\..\..\scanner\lib\scanner.lib
 
-build scanner.exe: CXX_EXECUTABLE_LINKER__scanner_Debug CMakeFiles\scanner.dir\scanner.cpp.obj CMakeFiles\scanner.dir\scannertest.cpp.obj
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
-  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
-  OBJECT_DIR = CMakeFiles\scanner.dir
+build ..\..\..\scanner\lib\scanner.lib: CXX_STATIC_LIBRARY_LINKER__scanner_Debug scanner\CMakeFiles\scanner.dir\scanner.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64
+  OBJECT_DIR = scanner\CMakeFiles\scanner.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\scanner.dir\
-  TARGET_FILE = scanner.exe
-  TARGET_IMPLIB = scanner.lib
-  TARGET_PDB = scanner.pdb
+  TARGET_COMPILE_PDB = scanner\CMakeFiles\scanner.dir\scanner.pdb
+  TARGET_FILE = ..\..\..\scanner\lib\scanner.lib
+  TARGET_PDB = ..\..\..\scanner\lib\scanner.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
-build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D F:\work\function_printer\out\build\x64-Debug && "E:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+build scanner\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D F:\work\function_printer\out\build\x64-Debug\scanner && "E:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build edit_cache: phony CMakeFiles\edit_cache.util
+build scanner\edit_cache: phony scanner\CMakeFiles\edit_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# F:/work/function_printer/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target parser
+
+
+#############################################
+# Order-only phony target for parser
+
+build cmake_object_order_depends_target_parser: phony || cmake_object_order_depends_target_scanner
+
+build parser\CMakeFiles\parser.dir\parser.cpp.obj: CXX_COMPILER__parser_Debug F$:\work\function_printer\parser\parser.cpp || cmake_object_order_depends_target_parser
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -IF:\work\function_printer\parser\..\scanner
+  OBJECT_DIR = parser\CMakeFiles\parser.dir
+  OBJECT_FILE_DIR = parser\CMakeFiles\parser.dir
+  TARGET_COMPILE_PDB = parser\CMakeFiles\parser.dir\
+  TARGET_PDB = parser\parser.pdb
+
+build parser\CMakeFiles\parser.dir\parsertest.cpp.obj: CXX_COMPILER__parser_Debug F$:\work\function_printer\parser\parsertest.cpp || cmake_object_order_depends_target_parser
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -IF:\work\function_printer\parser\..\scanner
+  OBJECT_DIR = parser\CMakeFiles\parser.dir
+  OBJECT_FILE_DIR = parser\CMakeFiles\parser.dir
+  TARGET_COMPILE_PDB = parser\CMakeFiles\parser.dir\
+  TARGET_PDB = parser\parser.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target parser
+
+
+#############################################
+# Link the executable parser\parser.exe
+
+build parser\parser.exe: CXX_EXECUTABLE_LINKER__parser_Debug parser\CMakeFiles\parser.dir\parser.cpp.obj parser\CMakeFiles\parser.dir\parsertest.cpp.obj | ..\..\..\scanner\lib\scanner.lib || ..\..\..\scanner\lib\scanner.lib
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
+  LINK_LIBRARIES = ..\..\..\scanner\lib\scanner.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  LINK_PATH = -LIBPATH:F:\work\function_printer\parser\..\scanner\lib
+  OBJECT_DIR = parser\CMakeFiles\parser.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = parser\CMakeFiles\parser.dir\
+  TARGET_FILE = parser\parser.exe
+  TARGET_IMPLIB = parser\parser.lib
+  TARGET_PDB = parser\parser.pdb
+
+
+#############################################
+# Utility command for edit_cache
+
+build parser\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D F:\work\function_printer\out\build\x64-Debug\parser && "E:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build parser\edit_cache: phony parser\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build parser\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D F:\work\function_printer\out\build\x64-Debug\parser && "E:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SF:\work\function_printer -BF:\work\function_printer\out\build\x64-Debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build parser\rebuild_cache: phony parser\CMakeFiles\rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# F:/work/function_printer/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target semantic
+
+
+#############################################
+# Order-only phony target for semantic
+
+build cmake_object_order_depends_target_semantic: phony || semantic\CMakeFiles\semantic.dir
+
+build semantic\CMakeFiles\semantic.dir\semantic.cpp.obj: CXX_COMPILER__semantic_Debug F$:\work\function_printer\semantic\semantic.cpp || cmake_object_order_depends_target_semantic
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -IF:\work\function_printer\semantic\..\parser
+  OBJECT_DIR = semantic\CMakeFiles\semantic.dir
+  OBJECT_FILE_DIR = semantic\CMakeFiles\semantic.dir
+  TARGET_COMPILE_PDB = semantic\CMakeFiles\semantic.dir\
+  TARGET_PDB = semantic\semantic.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target semantic
+
+
+#############################################
+# Link the executable semantic\semantic.exe
+
+build semantic\semantic.exe: CXX_EXECUTABLE_LINKER__semantic_Debug semantic\CMakeFiles\semantic.dir\semantic.cpp.obj
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
+  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  OBJECT_DIR = semantic\CMakeFiles\semantic.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = semantic\CMakeFiles\semantic.dir\
+  TARGET_FILE = semantic\semantic.exe
+  TARGET_IMPLIB = semantic\semantic.lib
+  TARGET_PDB = semantic\semantic.pdb
+
+
+#############################################
+# Utility command for edit_cache
+
+build semantic\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D F:\work\function_printer\out\build\x64-Debug\semantic && "E:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build semantic\edit_cache: phony semantic\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build semantic\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D F:\work\function_printer\out\build\x64-Debug\semantic && "E:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SF:\work\function_printer -BF:\work\function_printer\out\build\x64-Debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build semantic\rebuild_cache: phony semantic\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Target aliases.
 
 build function_printer: phony function_printer.exe
 
-build scanner: phony scanner.exe
+build parser: phony parser\parser.exe
+
+build parser.exe: phony parser\parser.exe
+
+build scanner: phony ..\..\..\scanner\lib\scanner.lib
+
+build scanner.lib: phony ..\..\..\scanner\lib\scanner.lib
+
+build scannertest: phony scanner\scannertest.exe
+
+build scannertest.exe: phony scanner\scannertest.exe
+
+build semantic: phony semantic\semantic.exe
+
+build semantic.exe: phony semantic\semantic.exe
 
 # =============================================================================
 # Folder targets.
@@ -157,7 +372,28 @@ build scanner: phony scanner.exe
 #############################################
 # Folder: F:/work/function_printer/out/build/x64-Debug
 
-build all: phony function_printer.exe scanner.exe
+build all: phony function_printer.exe scanner\all parser\all semantic\all
+
+# =============================================================================
+
+#############################################
+# Folder: F:/work/function_printer/out/build/x64-Debug/parser
+
+build parser\all: phony parser\parser.exe
+
+# =============================================================================
+
+#############################################
+# Folder: F:/work/function_printer/out/build/x64-Debug/scanner
+
+build scanner\all: phony scanner\scannertest.exe ..\..\..\scanner\lib\scanner.lib
+
+# =============================================================================
+
+#############################################
+# Folder: F:/work/function_printer/out/build/x64-Debug/semantic
+
+build semantic\all: phony semantic\semantic.exe
 
 # =============================================================================
 # Built-in targets
@@ -166,14 +402,14 @@ build all: phony function_printer.exe scanner.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt CMakeCache.txt CMakeFiles\3.21.21080301-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeSystem.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake
+build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt ..\..\..\parser\CMakeLists.txt ..\..\..\scanner\CMakeLists.txt ..\..\..\semantic\CMakeLists.txt CMakeCache.txt CMakeFiles\3.21.21080301-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeSystem.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ..\..\..\CMakeLists.txt CMakeCache.txt CMakeFiles\3.21.21080301-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeSystem.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake: phony
+build ..\..\..\CMakeLists.txt ..\..\..\parser\CMakeLists.txt ..\..\..\scanner\CMakeLists.txt ..\..\..\semantic\CMakeLists.txt CMakeCache.txt CMakeFiles\3.21.21080301-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.21.21080301-MSVC_2\CMakeSystem.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake E$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake: phony
 
 
 #############################################
