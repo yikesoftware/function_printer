@@ -6,10 +6,6 @@
 			[
 				{
 					"build" : ".",
-					"childIndexes" : 
-					[
-						1
-					],
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
@@ -19,21 +15,7 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
-					]
-				},
-				{
-					"build" : "scanner",
-					"jsonFile" : "directory-scanner-Debug-f46c9f0897199a9e4cbd.json",
-					"minimumCMakeVersion" : 
-					{
-						"string" : "3.8"
-					},
-					"parentIndex" : 0,
-					"projectIndex" : 0,
-					"source" : "scanner",
-					"targetIndexes" : 
-					[
+						0,
 						1
 					]
 				}
@@ -44,8 +26,7 @@
 				{
 					"directoryIndexes" : 
 					[
-						0,
-						1
+						0
 					],
 					"name" : "function_printer",
 					"targetIndexes" : 
@@ -65,9 +46,9 @@
 					"projectIndex" : 0
 				},
 				{
-					"directoryIndex" : 1,
-					"id" : "scanner::@9c32ba33a8a2f2e62883",
-					"jsonFile" : "target-scanner-Debug-e911c471a84a3063764a.json",
+					"directoryIndex" : 0,
+					"id" : "scanner::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-scanner-Debug-34f6879abde1e7993714.json",
 					"name" : "scanner",
 					"projectIndex" : 0
 				}
