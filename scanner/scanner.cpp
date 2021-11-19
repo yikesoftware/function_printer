@@ -54,7 +54,7 @@ void EmptyTokenBuf() {
 int TokenBufPush(const char ch) {
 	if (strlen(TokenBufStream) >= MAX_TOKEN_LEN) {
 		fprintf(stderr, "[%s, %d, %s()] Token too long! - '%s'\n", __BASE_FILE__, __LINE__, __func__, TokenBufStream);
-		return -1;
+		exit(-1);
 	}
 	TokenBufStream[strlen(TokenBufStream)] = ch;
 	TokenBufStream[strlen(TokenBufStream)+1] = '\0';
@@ -78,9 +78,6 @@ Token KeyTokenMatch() {
 		}
 	}
 	// Matching failed
-	fprintf(stderr, "[%s, %d, %s()] Invalid char '%s' at line %u column %u!\n",
-		__BASE_FILE__, __LINE__, __func__,
-		TokenBufStream, LineCount, LinePos);
 	return GetErrorToken();
 }
 
