@@ -6,7 +6,7 @@
 #include <stdarg.h>
 #include "parser.h"
 
-#define __BASE_FILE__ "./parser/parser.cpp"
+#define __BASE_FILE__ "parser.cpp"
 
 Token token;
 extern unsigned int LineCount;
@@ -86,26 +86,35 @@ Atom → CONST_ID
 */
 static struct ExprNode* Atom() {
 	struct ExprNode* Node, * FuncParam;
+	struct Token TmpToken = token;
+
 	switch (token.type) {
 	case CONST_ID:
-		Node = MakeExprNode(CONST_ID, token.value);
-		MathchToken(CONST_ID);
+		//puts("Atom case CONST_ID");
+		MatchToken(CONST_ID);
+		Node = MakeExprNode(CONST_ID, TmpToken.value);
 		break;
 	case T:
+		//puts("Atom case T");
+		MatchToken(T);
 		Node = MakeExprNode(T);
-		MathchToken(T);
 		break;
 	case FUNC:
+		//puts("Atom case FUNC");
+		MatchToken(FUNC);
+		MatchToken(L_BRACKET);
 		FuncParam = Expression();
-		Node = MakeExprNode(FUNC, token.FuncPtr, FuncParam);
-		MathchToken(FUNC);
+		Node = MakeExprNode(FUNC, TmpToken.FuncPtr, FuncParam);
+		MatchToken(R_BRACKET);
 		break;
 	case L_BRACKET:
-		MathchToken(L_BRACKET);
+		//puts("Atom case L_BRACKET");
+		MatchToken(L_BRACKET);
 		Node = Expression();
-		MathchToken(R_BRACKET);
+		MatchToken(R_BRACKET);
 		break;
 	default:
+		//puts("Component case DEFAULT");
 		SyntaxError(UNEXPECTED_TOKEN);
 		return NULL;
 	}
@@ -122,7 +131,7 @@ static struct ExprNode* Component() {
 	struct ExprNode* Left, * Right;
 	Left = Atom();
 	if (token.type == POWER) {
-		MathchToken(POWER);
+		MatchToken(POWER);
 		Right = Component();
 		Left = MakeExprNode(POWER, Left, Right); // The left node of the power operation is itself
 	}
@@ -136,19 +145,24 @@ static struct ExprNode* Factor() {
 	struct ExprNode* Left, * Right;
 	switch (token.type) {
 	case PLUS:
-		MathchToken(PLUS);
+		MatchToken(PLUS);
 		Right = Factor();
 		break;
 	case MINUS:
-		MathchToken(MINUS);
+		MatchToken(MINUS);
 		Right = Factor();
 		Left = (struct ExprNode*)calloc(1, sizeof(struct ExprNode*));
+		if (!Left) {
+			fprintf(stderr, "[%s, %d, %s()] Can not allocate memory!\n", __BASE_FILE__, __LINE__, __func__);
+			exit(-1);
+		}
 		Left->OpCode = CONST_ID;
 		Left->Content.CaseConst = 0.0;
 		Right = MakeExprNode(MINUS, Left, Right);
 		break;
 	default:
 		Right = Component();
+		break;
 	}
 
 	return Right;
@@ -166,7 +180,7 @@ static struct ExprNode* Term() {
 	Left = Factor();
 	while (token.type == MUL || token.type == DIV) {
 		TmpType = token.type;
-		MathchToken(TmpType);
+		MatchToken(TmpType);
 		Right = Factor();
 		Left = MakeExprNode(TmpType, Left, Right); // left combination
 	}
@@ -177,10 +191,12 @@ static struct ExprNode* Term() {
 static struct ExprNode* Expression() {
 	struct ExprNode* Left, * Right;
 	Token_Type TmpType;
+
 	Left = Term();
+	//printf("Expression left: %p value: %lf Type: %d\n", Left, Left->Content.CaseConst, Left->OpCode);
 	while (token.type == PLUS || token.type == MINUS) {
 		TmpType = token.type;
-		MathchToken(TmpType);
+		MatchToken(TmpType);
 		Right = Term();
 		Left = MakeExprNode(TmpType, Left, Right); // left combination
 	}
@@ -193,55 +209,96 @@ static struct ExprNode* Expression() {
 static void OriginStatement() { 
 	struct ExprNode *TmpExpr;
 
-	MathchToken(ORIGIN);
-	MathchToken(IS);
-	MathchToken(L_BRACKET);
+	MatchToken(ORIGIN);
+	MatchToken(IS);
+	MatchToken(L_BRACKET);
 	
 	TmpExpr = Expression();
-	OriginX = CalcExpression(TmpExpr);
+	OriginX = GetExprValue(TmpExpr);
 	DelExprTree(TmpExpr);
 
-	MathchToken(COMMA);
+	MatchToken(COMMA);
 
 	TmpExpr = Expression();
-	OriginY = CalcExpression(TmpExpr);
+	OriginY = GetExprValue(TmpExpr);
 	DelExprTree(TmpExpr);
 
-	MathchToken(R_BRACKET);
+	MatchToken(R_BRACKET);
 }
 
 static void RotStatement() { 
 	struct ExprNode* TmpExpr;
 
-	MathchToken(ROT);
-	MathchToken(IS);
+	MatchToken(ROT);
+	MatchToken(IS);
 	TmpExpr = Expression();
-	RotAngle = CalcExpression(TmpExpr);
+	RotAngle = GetExprValue(TmpExpr);
 	DelExprTree(TmpExpr);
 }
 
 static void ScaleStatement() { 
 	struct ExprNode* TmpExpr;
 
-	MathchToken(SCALE);
-	MathchToken(IS);
-	MathchToken(L_BRACKET);
+	MatchToken(SCALE);
+	MatchToken(IS);
+	MatchToken(L_BRACKET);
 
 	TmpExpr = Expression();
-	ScaleX = CalcExpression(TmpExpr);
+	ScaleX = GetExprValue(TmpExpr);
 	DelExprTree(TmpExpr);
 
-	MathchToken(COMMA);
+	MatchToken(COMMA);
 
 	TmpExpr = Expression();
-	ScaleY = CalcExpression(TmpExpr);
+	ScaleY = GetExprValue(TmpExpr);
 	DelExprTree(TmpExpr);
 
-	MathchToken(R_BRACKET);
+	MatchToken(R_BRACKET);
 }
 
+/* e.g:
+* for t from 0 to 2*pi step pi/100 draw(cos(t), sin(t));
+*/
 static void ForStatement() { 
-	
+	struct ExprNode* TmpExpr;
+	struct ExprNode* x_ptr, * y_ptr;
+	double start, end, step;
+	MatchToken(FOR);
+	MatchToken(T);
+	MatchToken(FROM);
+
+	TmpExpr = Expression();
+	start = GetExprValue(TmpExpr);
+	//printf("Expr: %p ExpVal: %lf start: %lf\n", TmpExpr, TmpExpr->Content.CaseConst, start);
+
+	MatchToken(TO);
+
+	TmpExpr = Expression();
+	end = GetExprValue(TmpExpr);
+	//printf("Expr: %p ExpVal: %lf end: %lf\n", TmpExpr, TmpExpr->Content.CaseConst, end);
+
+	MatchToken(STEP);
+
+	TmpExpr = Expression();
+	step = GetExprValue(TmpExpr);
+	//printf("Expr: %p ExpVal: %lf step: %lf\n", TmpExpr, TmpExpr->Content.CaseConst, step);
+
+	MatchToken(DRAW);
+	MatchToken(L_BRACKET);
+
+	x_ptr = Expression();
+	// PrintSyntaxTree(x_ptr, 5);
+
+	MatchToken(COMMA);
+
+	y_ptr = Expression();
+	// PrintSyntaxTree(y_ptr, 5);
+
+	MatchToken(R_BRACKET);
+
+	printf("DrawLoop(%lf, %lf, %lf, %p, %p)\n", start, end, step, x_ptr, y_ptr);
+	//getchar();
+	DrawLoop(start, end, step, x_ptr, y_ptr);
 }
 
 static void Statement() { 
@@ -267,7 +324,7 @@ static void Statement() {
 	}
 }
 
-static void MathchToken(enum Token_Type ExpectedType) {
+static void MatchToken(enum Token_Type ExpectedType) {
 	// Check whether the next token in the token stream is the expected token
 	if (token.type != ExpectedType) {
 		// fprintf(stderr, "[%s, %d, %s()] ", __BASE_FILE__, __LINE__, __func__);
@@ -282,7 +339,7 @@ static void Program() {
 		// Parse entire statement
 		Statement(); 
 		// Expecting a terminator of statement - ';'
-		MathchToken(SEMICO); 
+		MatchToken(SEMICO); 
 	}
 	return;
 }
@@ -295,4 +352,31 @@ void Parser(const char *filename) {
 	FetchToken(); // Fetch the first token
 	Program(); // start program
 	CloseScanner();
+}
+
+void PrintSyntaxTree(struct ExprNode* root, int indent)
+{
+	int temp;
+	for (temp = 1; temp <= indent; temp++) printf("\t");
+	switch (root->OpCode)
+	{
+	case PLUS:		printf("%s\n", "+");								break;
+	case MINUS:		printf("%s\n", "-");								break;
+	case MUL:		printf("%s\n", "*");								break;
+	case DIV:		printf("%s\n", "/");								break;
+	case POWER:		printf("%s\n", "**");								break;
+	case FUNC:		printf("%p\n", root->Content.CaseFunc.MathFuncPtr);	break;
+	case CONST_ID:	printf("%f\n", root->Content.CaseConst);			break;
+	case T:			printf("%s\n", "T");								break;
+	default:		printf("Error Tree Node !\n");						exit(0);
+	}
+	if (root->OpCode == CONST_ID || root->OpCode == T) 
+		return;
+	if (root->OpCode == FUNC)
+		PrintSyntaxTree(root->Content.CaseFunc.Child, indent + 1);
+	else
+	{
+		PrintSyntaxTree(root->Content.CaseOperator.Left, indent + 1);
+		PrintSyntaxTree(root->Content.CaseOperator.Right, indent + 1);
+	}
 }

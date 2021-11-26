@@ -41,50 +41,66 @@ include CMakeFiles\rules.ninja
 
 cmake_ninja_workdir = D$:\Works\function_printer\out\build\x64-Debug\
 # =============================================================================
-# Object build statements for EXECUTABLE target semantictest
+# Object build statements for EXECUTABLE target function_printer
 
 
 #############################################
-# Order-only phony target for semantictest
+# Order-only phony target for function_printer
 
-build cmake_object_order_depends_target_semantictest: phony || CMakeFiles\semantictest.dir
+build cmake_object_order_depends_target_function_printer: phony || CMakeFiles\function_printer.dir
 
-build CMakeFiles\semantictest.dir\semantictest.cpp.obj: CXX_COMPILER__semantictest_Debug D$:\Works\function_printer\semantictest.cpp || cmake_object_order_depends_target_semantictest
+build CMakeFiles\function_printer.dir\function_printer.cpp.obj: CXX_COMPILER__function_printer_Debug D$:\Works\function_printer\function_printer.cpp || cmake_object_order_depends_target_function_printer
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   INCLUDES = -ID:\Works\function_printer\SDL2\include
-  OBJECT_DIR = CMakeFiles\semantictest.dir
-  OBJECT_FILE_DIR = CMakeFiles\semantictest.dir
-  TARGET_COMPILE_PDB = CMakeFiles\semantictest.dir\
-  TARGET_PDB = ..\..\..\bin\semantictest.pdb
+  OBJECT_DIR = CMakeFiles\function_printer.dir
+  OBJECT_FILE_DIR = CMakeFiles\function_printer.dir
+  TARGET_COMPILE_PDB = CMakeFiles\function_printer.dir\
+  TARGET_PDB = ..\..\..\bin\function_printer.pdb
 
-build CMakeFiles\semantictest.dir\semantic.cpp.obj: CXX_COMPILER__semantictest_Debug D$:\Works\function_printer\semantic.cpp || cmake_object_order_depends_target_semantictest
+build CMakeFiles\function_printer.dir\scanner.cpp.obj: CXX_COMPILER__function_printer_Debug D$:\Works\function_printer\scanner.cpp || cmake_object_order_depends_target_function_printer
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   INCLUDES = -ID:\Works\function_printer\SDL2\include
-  OBJECT_DIR = CMakeFiles\semantictest.dir
-  OBJECT_FILE_DIR = CMakeFiles\semantictest.dir
-  TARGET_COMPILE_PDB = CMakeFiles\semantictest.dir\
-  TARGET_PDB = ..\..\..\bin\semantictest.pdb
+  OBJECT_DIR = CMakeFiles\function_printer.dir
+  OBJECT_FILE_DIR = CMakeFiles\function_printer.dir
+  TARGET_COMPILE_PDB = CMakeFiles\function_printer.dir\
+  TARGET_PDB = ..\..\..\bin\function_printer.pdb
+
+build CMakeFiles\function_printer.dir\parser.cpp.obj: CXX_COMPILER__function_printer_Debug D$:\Works\function_printer\parser.cpp || cmake_object_order_depends_target_function_printer
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -ID:\Works\function_printer\SDL2\include
+  OBJECT_DIR = CMakeFiles\function_printer.dir
+  OBJECT_FILE_DIR = CMakeFiles\function_printer.dir
+  TARGET_COMPILE_PDB = CMakeFiles\function_printer.dir\
+  TARGET_PDB = ..\..\..\bin\function_printer.pdb
+
+build CMakeFiles\function_printer.dir\semantic.cpp.obj: CXX_COMPILER__function_printer_Debug D$:\Works\function_printer\semantic.cpp || cmake_object_order_depends_target_function_printer
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -ID:\Works\function_printer\SDL2\include
+  OBJECT_DIR = CMakeFiles\function_printer.dir
+  OBJECT_FILE_DIR = CMakeFiles\function_printer.dir
+  TARGET_COMPILE_PDB = CMakeFiles\function_printer.dir\
+  TARGET_PDB = ..\..\..\bin\function_printer.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target semantictest
+# Link build statements for EXECUTABLE target function_printer
 
 
 #############################################
-# Link the executable ..\..\..\bin\semantictest.exe
+# Link the executable ..\..\..\bin\function_printer.exe
 
-build ..\..\..\bin\semantictest.exe: CXX_EXECUTABLE_LINKER__semantictest_Debug CMakeFiles\semantictest.dir\semantictest.cpp.obj CMakeFiles\semantictest.dir\semantic.cpp.obj
+build ..\..\..\bin\function_printer.exe: CXX_EXECUTABLE_LINKER__function_printer_Debug CMakeFiles\function_printer.dir\function_printer.cpp.obj CMakeFiles\function_printer.dir\scanner.cpp.obj CMakeFiles\function_printer.dir\parser.cpp.obj CMakeFiles\function_printer.dir\semantic.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = SDL2.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   LINK_PATH = -LIBPATH:D:\Works\function_printer\lib\win\x64
-  OBJECT_DIR = CMakeFiles\semantictest.dir
+  OBJECT_DIR = CMakeFiles\function_printer.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\semantictest.dir\
-  TARGET_FILE = ..\..\..\bin\semantictest.exe
-  TARGET_IMPLIB = ..\..\..\bin\semantictest.lib
-  TARGET_PDB = ..\..\..\bin\semantictest.pdb
+  TARGET_COMPILE_PDB = CMakeFiles\function_printer.dir\
+  TARGET_FILE = ..\..\..\bin\function_printer.exe
+  TARGET_IMPLIB = ..\..\..\bin\function_printer.lib
+  TARGET_PDB = ..\..\..\bin\function_printer.pdb
 
 
 #############################################
@@ -112,9 +128,9 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build semantictest: phony ..\..\..\bin\semantictest.exe
+build function_printer: phony ..\..\..\bin\function_printer.exe
 
-build semantictest.exe: phony ..\..\..\bin\semantictest.exe
+build function_printer.exe: phony ..\..\..\bin\function_printer.exe
 
 # =============================================================================
 # Folder targets.
@@ -124,7 +140,7 @@ build semantictest.exe: phony ..\..\..\bin\semantictest.exe
 #############################################
 # Folder: D:/Works/function_printer/out/build/x64-Debug
 
-build all: phony ..\..\..\bin\semantictest.exe
+build all: phony ..\..\..\bin\function_printer.exe
 
 # =============================================================================
 # Built-in targets

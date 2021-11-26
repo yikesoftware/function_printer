@@ -5,7 +5,7 @@
 #include <iostream>
 #include "scanner.h"
 
-#define __BASE_FILE__ "./scanner/scanner.cpp"
+#define __BASE_FILE__ "scanner.cpp"
 #define MAX_TOKEN_LEN 0x40
 
 char TokenBufStream[MAX_TOKEN_LEN + 8];

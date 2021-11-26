@@ -34,4 +34,5 @@ static struct ExprNode* Component();
 static struct ExprNode* Factor();
 static struct ExprNode* Term();
 static struct ExprNode* Expression();
-static void MathchToken(enum Token_Type ExpectedType);
+static void MatchToken(enum Token_Type ExpectedType);
+static void PrintSyntaxTree(struct ExprNode* root, int indent);

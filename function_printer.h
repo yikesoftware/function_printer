@@ -5,5 +5,9 @@
 
 #include <iostream>
 #include "parser.h"
+#include "semantic.h"
 
 // TODO: 在此处引用程序需要的其他标头。
+
+#define DEFAULT_WINDOW_W 800
+#define DEFAULT_WINDOW_H 600

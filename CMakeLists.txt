@@ -30,14 +30,22 @@ elseif(LINUX)
 endif()
 
 SET(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/")
-SET(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/lib/")   
 
-aux_source_directory(. DIR_SRCS)
+add_executable (function_printer 
+    "function_printer.cpp" "function_printer.h"
+    "scanner.cpp" "scanner.h"
+    "parser.cpp" "parser.h"
+    "semantic.cpp" "semantic.h"
+)
+target_link_libraries(function_printer SDL2.lib)
 
-#add_executable (parsertest ${DIR_SRCS})
+#add_executable (semantictest "semantictest.cpp" "semantic.cpp" "semantic.h")
+#target_link_libraries(semantictest SDL2.lib)
 
-add_executable (semantictest "semantictest.cpp" "semantic.cpp" "semantic.h")
-
-target_link_libraries(semantictest SDL2.lib)
-#add_executable (function_printer "function_printer.cpp" "function_printer.h")
+#add_executable (parsertest 
+#    "parsertest.cpp" "parser.cpp" "parser.h"
+#    "scanner.cpp" "scanner.h"
+#    "semantic.cpp" "semantic.h"
+#)
+#target_link_libraries(parsertest SDL2)
 

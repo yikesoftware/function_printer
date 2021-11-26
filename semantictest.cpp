@@ -3,30 +3,16 @@
 
 using namespace std;
 
+
 extern "C" {
 
 #include <SDL.h>
 
 }
 
+
 extern SDL_Window* sdl_window;
 extern SDL_Renderer* renderer;
-
-#define POINT_COUNT 5
-#define T_POINT_COUNT 4
-// points to draw
-static SDL_Point points[POINT_COUNT] = {
-    {50, 50},
-    {60, 50},
-    {60, 60},
-    {50, 60},
-    {50, 50} };
-
-static SDL_Point triangle_points[T_POINT_COUNT] = {
-    {150, 150},
-    {200, 150},
-    {175, 175},
-    {150, 150} };
 
 #undef main
 int main() {
@@ -53,12 +39,11 @@ int main() {
     SDL_SetRenderDrawColor(renderer, 0, 128, 0, SDL_ALPHA_OPAQUE);
     
     for (int i = 0; i < 100; i++) {
-        DrawPoint(i+100, i+100);
+        DrawPixel(i+100, i+100);
     }
 
     // show window
     SDL_RenderPresent(renderer);
-
 
     do
     {
