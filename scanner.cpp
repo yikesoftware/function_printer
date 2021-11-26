@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include <iostream>
+#include <cstring>
 #include "scanner.h"
 
 #define __BASE_FILE__ "scanner.cpp"
@@ -72,7 +73,12 @@ static Token KeyTokenMatch() {
 	// Traverse the entire TokenTab
 	for (int i = 0; i < TokenTabSize; i++) {
 		Token* item = &TokenTab[i];
-		if (!stricmp(TokenBufStream, item->lexeme)) {
+		#if _WIN32
+		if(!stricmp(TokenBufStream, item->lexeme))
+		#else
+		if(!strcasecmp(TokenBufStream, item->lexeme))
+		#endif
+		{
 			// Match successful
 			return TokenTab[i];
 		}

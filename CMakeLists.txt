@@ -26,8 +26,9 @@ if(WINDOWS)
     link_directories("${PROJECT_SOURCE_DIR}/lib/win/${platform}") 
     file(COPY ${PROJECT_SOURCE_DIR}/lib/win/${platform}/SDL2.dll DESTINATION ${PROJECT_SOURCE_DIR}/bin)
 elseif(LINUX)
-    link_directories("${PROJECT_SOURCE_DIR}/lib/linux/${platform}")
-    file(COPY ${PROJECT_SOURCE_DIR}/lib/linux/${platform}/SDL2.so DESTINATION ${PROJECT_SOURCE_DIR}/bin)
+    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+    find_package(SDL2 REQUIRED)
+    include_directories(${SDL2_INCLUDE_DIR})
 endif()
 
 SET(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/")
@@ -40,7 +41,13 @@ add_executable (function_printer
     "parser.cpp" "parser.h"
     "semantic.cpp" "semantic.h"
 )
-target_link_libraries(function_printer SDL2)
+
+if(WINDOWS)
+    target_link_libraries(function_printer SDL2)
+elseif(LINUX)
+    target_link_libraries(function_printer SDL2)
+endif()
+
 
 #add_executable (semantictest "semantictest.cpp" "semantic.cpp" "semantic.h")
 #target_link_libraries(semantictest SDL2.lib)

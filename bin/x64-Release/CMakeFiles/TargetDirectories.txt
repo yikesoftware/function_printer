@@ -1,3 +1,0 @@
-D:/Works/function_printer/bin/x64-Release/CMakeFiles/function_printer.dir
-D:/Works/function_printer/bin/x64-Release/CMakeFiles/edit_cache.dir
-D:/Works/function_printer/bin/x64-Release/CMakeFiles/rebuild_cache.dir

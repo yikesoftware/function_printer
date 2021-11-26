@@ -1,6 +1,7 @@
 ﻿// function_printer.cpp: 定义应用程序的入口点。
 //
-#include <stdio.h>
+#include <cstdio>
+#include <cstring>
 #include "function_printer.h"
 
 extern "C" {
