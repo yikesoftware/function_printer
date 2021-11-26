@@ -2,6 +2,7 @@
 //
 
 #include "semantic.h"
+#include "SDL.h"
 
 double Parameter;
 double OriginX;
@@ -9,6 +10,9 @@ double OriginY;
 double RotAngle;
 double ScaleX;
 double ScaleY;
+
+SDL_Window* sdl_window;
+SDL_Renderer* renderer;
 
 void DelExprTree(struct ExprNode* root) {
 	if (root == NULL) {
@@ -74,3 +78,6 @@ double CalcExpression(struct ExprNode* root) {
 	return 0.0;
 }
 
+void DrawPoint(int x, int y) {
+	SDL_RenderDrawPoint(renderer, x, y);
+}

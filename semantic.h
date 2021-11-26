@@ -7,4 +7,4 @@ void DelExprTree(struct ExprNode* root);
 
 double CalcExpression(struct ExprNode* root);
 
-
+void DrawPoint(int x, int y);
