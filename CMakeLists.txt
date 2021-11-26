@@ -23,10 +23,11 @@ ENDIF(CMAKE_CL_64)
 
 
 if(WINDOWS)
-    link_directories("${PROJECT_SOURCE_DIR}/lib/win/x64") 
-    file(COPY ${PROJECT_SOURCE_DIR}/lib/win/${platform}/SDL2.dll DESTINATION ${PROJECT_SOURCE_DIR}/bin/${configurationType})
+    link_directories("${PROJECT_SOURCE_DIR}/lib/win/${platform}") 
+    file(COPY ${PROJECT_SOURCE_DIR}/lib/win/${platform}/SDL2.dll DESTINATION ${PROJECT_SOURCE_DIR}/bin)
 elseif(LINUX)
-    link_directories("${PROJECT_SOURCE_DIR}/lib/linux") 
+    link_directories("${PROJECT_SOURCE_DIR}/lib/linux/${platform}")
+    file(COPY ${PROJECT_SOURCE_DIR}/lib/linux/${platform}/SDL2.so DESTINATION ${PROJECT_SOURCE_DIR}/bin)
 endif()
 
 SET(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/")
@@ -39,7 +40,7 @@ add_executable (function_printer
     "parser.cpp" "parser.h"
     "semantic.cpp" "semantic.h"
 )
-target_link_libraries(function_printer SDL2.lib)
+target_link_libraries(function_printer SDL2)
 
 #add_executable (semantictest "semantictest.cpp" "semantic.cpp" "semantic.h")
 #target_link_libraries(semantictest SDL2.lib)
