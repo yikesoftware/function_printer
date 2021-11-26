@@ -1,0 +1,7 @@
+# ninja log v5
+5	128	6596502670286969	CMakeFiles/function_printer.dir/parser.cpp.obj	ba36674e84ddb41f
+7	197	6596502670829836	CMakeFiles/function_printer.dir/semantic.cpp.obj	b91a15819eca44f6
+1	290	6596505101942007	../function_printer.exe	1b58bf2486003954
+0	309	6596502672102714	CMakeFiles/function_printer.dir/scanner.cpp.obj	d479d738af02c16f
+3	375	6596502672753741	CMakeFiles/function_printer.dir/function_printer.cpp.obj	2bc351afa6ce87d9
+1	172	6596512129823127	../function_printer.exe	1b58bf2486003954

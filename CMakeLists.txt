@@ -24,12 +24,14 @@ ENDIF(CMAKE_CL_64)
 
 if(WINDOWS)
     link_directories("${PROJECT_SOURCE_DIR}/lib/win/x64") 
-    file(COPY ${PROJECT_SOURCE_DIR}/lib/win/${platform}/SDL2.dll DESTINATION ${PROJECT_SOURCE_DIR}/bin)
+    file(COPY ${PROJECT_SOURCE_DIR}/lib/win/${platform}/SDL2.dll DESTINATION ${PROJECT_SOURCE_DIR}/bin/${configurationType})
 elseif(LINUX)
     link_directories("${PROJECT_SOURCE_DIR}/lib/linux") 
 endif()
 
 SET(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG "${PROJECT_SOURCE_DIR}/bin/")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${PROJECT_SOURCE_DIR}/bin/")
 
 add_executable (function_printer 
     "function_printer.cpp" "function_printer.h"
