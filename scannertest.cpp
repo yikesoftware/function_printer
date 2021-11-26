@@ -5,7 +5,7 @@
 extern unsigned int LineCount;
 extern unsigned int LinePos;
 
-/*
+
 int main() {
 	std::cout << "Scanner Test..." << std::endl;
 	if (InitScanner("C://test.funcs") == -1) {
@@ -22,4 +22,3 @@ int main() {
 	CloseScanner();
 	return 0;
 }
-*/
