@@ -202,6 +202,24 @@ function_printer_IS_TOP_LEVEL:STATIC=ON
 function_printer_SOURCE_DIR:STATIC=F:/work/function_printer
 
 //Value Computed by CMake
+parser_BINARY_DIR:STATIC=F:/work/function_printer/out/build/x64-Debug
+
+//Value Computed by CMake
+parser_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+parser_SOURCE_DIR:STATIC=F:/work/function_printer
+
+//Value Computed by CMake
+parsertest_BINARY_DIR:STATIC=F:/work/function_printer/out/build/x64-Debug
+
+//Value Computed by CMake
+parsertest_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+parsertest_SOURCE_DIR:STATIC=F:/work/function_printer
+
+//Value Computed by CMake
 scanner_BINARY_DIR:STATIC=F:/work/function_printer/out/build/x64-Debug/scanner
 
 //Value Computed by CMake
@@ -301,7 +319,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib

@@ -1,4 +1,0 @@
-F:/work/function_printer/scanner/build/CMakeFiles/scannertest.dir
-F:/work/function_printer/scanner/build/CMakeFiles/scanner.dir
-F:/work/function_printer/scanner/build/CMakeFiles/ALL_BUILD.dir
-F:/work/function_printer/scanner/build/CMakeFiles/ZERO_CHECK.dir
