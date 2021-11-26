@@ -42,12 +42,7 @@ add_executable (function_printer
     "semantic.cpp" "semantic.h"
 )
 
-if(WINDOWS)
-    target_link_libraries(function_printer SDL2)
-elseif(LINUX)
-    target_link_libraries(function_printer SDL2)
-endif()
-
+target_link_libraries(function_printer SDL2)
 
 #add_executable (semantictest "semantictest.cpp" "semantic.cpp" "semantic.h")
 #target_link_libraries(semantictest SDL2.lib)

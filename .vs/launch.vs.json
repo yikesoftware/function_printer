@@ -1,0 +1,12 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "function_printer.exe (D:\\Works\\function_printer\\bin\\function_printer.exe)",
+      "name": "function_printer.exe (D:\\Works\\function_printer\\bin\\function_printer.exe)"
+    }
+  ]
+}
